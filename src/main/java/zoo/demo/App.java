@@ -3,7 +3,7 @@ package zoo.demo;
 import java.util.*;
 
 public class App {
-    public static Map<Animal, List<Animal>> friendMap = new HashMap<>();
+    private static Map<Animal, List<Animal>> friendMap = new HashMap<>();
     private static List<Animal> animalList = new ArrayList<>();
     private static Random random = new Random();
 
@@ -19,7 +19,7 @@ public class App {
         Animal chicken_2 = new Chicken("Chicken two", "Corn", "0,75", false);
 
         animalList = Arrays.asList(dog_1, dog_2, dog_3, parrot_1, parrot_2, chicken_1, chicken_2);
-        animalList.forEach(animal -> addAnimalToMapKey(animal));
+        animalList.forEach(animal -> addAnimal(animal));
         while (true) {
             System.out.println("\n" + "Please choose options(1, 2 or 3): ");
             System.out.println("1 >> SHOW_ANIMALS");
@@ -41,11 +41,11 @@ public class App {
         }
     }
 
-    public static void addAnimalToMapKey(Animal animal) {
+    private static void addAnimal(Animal animal) {
         friendMap.putIfAbsent(animal, new ArrayList<>());
     }
 
-    public static void display_AllAnimals() {
+    private static void display_AllAnimals() {
         friendMap.forEach((animal, friends) -> {
             if (animal instanceof Dog) {
                 System.out.println("Name: " + animal.getName() + ", " + "Favourite Food: " + animal.getFavouriteFood() + ", " + "Type: " + ((Dog) animal).getType());
@@ -66,7 +66,7 @@ public class App {
         });
     }
 
-    public static void liveOneDay(List<Animal> animalList) {
+    private static void liveOneDay(List<Animal> animalList) {
         friendMap.forEach((animal, friends) -> {
             //Start: Break friendship logic.
             int remove = -1;
@@ -107,7 +107,7 @@ public class App {
      * @param removedIndex
      * @return
      */
-    public static int generateRandomIndex(int selfIndex, int removedIndex, List friends, List animalList) {
+    private static int generateRandomIndex(int selfIndex, int removedIndex, List friends, List animalList) {
         int index;
         while (true) {
             index = random.nextInt(9);
@@ -127,7 +127,7 @@ public class App {
      * @param animal_1
      * @param animal_2
      */
-    public static void addFriendsToMap(Animal animal_1, Animal animal_2) {
+    private static void addFriendsToMap(Animal animal_1, Animal animal_2) {
         List<Animal> existingFriends_animal_1 = friendMap.get(animal_1);
         existingFriends_animal_1.add(animal_2);
 
@@ -140,7 +140,7 @@ public class App {
      * @param animal_1
      * @param animal_2
      */
-    public static void removeFriendsFromMap(Animal animal_1, Animal animal_2) {
+    private static void removeFriendsFromMap(Animal animal_1, Animal animal_2) {
         List<Animal> existingFriends_animal_1 = friendMap.get(animal_1);
         List<Animal> existingFriends_animal_2 = friendMap.get(animal_2);
         if (existingFriends_animal_1 != null) {
