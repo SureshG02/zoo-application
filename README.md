@@ -6,12 +6,15 @@ Java 8+ and Apache Maven
 
 Build project: 
 
+git clone https://github.com/SureshG02/zoo-application.git
+
+Go to directory zoo-application and run below command:
+
 mvn clean install
 
 Run main class: 
 
 mvn exec:java -Dexec.mainClass="zoo.demo.App"
-
 
 About application:
 
