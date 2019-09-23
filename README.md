@@ -1,4 +1,4 @@
-# Zoo application
+# Zoo application: Implement friendship between animals in Zoo.
 
 Prerequisite:
 
